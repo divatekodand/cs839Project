@@ -36,14 +36,14 @@ class TFiLMSmallCNN(nn.Module):
 
     def __init__(self, block_size, out_size, lstm_dim=256):
         super(TFiLMSmallCNN, self).__init__()
-        self.out_size = 
+        self.out_size = out_size
         self.features = nn.Sequential(
             nn.Conv1d(in_channels=256, out_channels=256, kernel_size=3, stride=1, padding=2, dilation=1, groups=1, bias=True),
             TFilM(block_size, 0), 
             nn.Conv1d(in_channels=256, out_channels=256, kernel_size=3, stride=1, padding=2, dilation=1, groups=1, bias=True),
             TFilM(block_size, 0), 
             nn.Conv1d(in_channels=256, out_channels=256, kernel_size=3, stride=1, padding=2, dilation=1, groups=1, bias=True),
-            TFilM(block_size, 0)
+            #TFilM(block_size, 0)
         )
         self.fc = nn.Linear(out_size, 1)
 
